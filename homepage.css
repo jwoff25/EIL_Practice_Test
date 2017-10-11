@@ -1,0 +1,16 @@
+a {
+    /*This makes href look like a button*/
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    
+    text-decoration: none;
+    color: initial;
+}
+
+#quiz {
+    border-style: double;
+}
+
+#ans {
+    font-size: 24px;
+}

@@ -93,9 +93,9 @@ var allValues = [];
 var word = [];
 var definition = [];
 $(function(){
-    $.getJSON('json/word_deflist.json',function(data){
+    $.getJSON('word.json',function(data){
         word = data.words;
-		definition = data.definitions;
+	definition = data.definitions;
         console.log('json loaded successfully');
     }).error(function(){
         console.log('error: json not loaded');

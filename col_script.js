@@ -199,7 +199,7 @@ function makeWordList4(){
 function printWrong(doc){
     for (var w of wrong){
         doc.innerHTML += "<p id='ans'>" + w.value + "</p>";
-        doc.innerHTML += "<p>" + w.def + "</p><br>";
+        doc.innerHTML += "<p>" + w.col + "</p><br>";
         
     }
 }
@@ -207,7 +207,7 @@ function printWrong(doc){
 function printCorrect(doc){
     for (var c of correct){
         doc.innerHTML += "<p id='ans'>" + c.value + "</p>";
-        doc.innerHTML += "<p>" + c.def + "</p><br>";
+        doc.innerHTML += "<p>" + c.col + "</p><br>";
     }
 }
 

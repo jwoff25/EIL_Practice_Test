@@ -137,11 +137,11 @@ function getObject(position,array){
 function clickButton(){
     var t = document.getElementById("quiz");
     t.innerHTML = "<p>Please pick a quiz to take.</p>";
-    t.innerHTML += "<input type='button' value='All Words' onClick='makeWordList()'>";
-    t.innerHTML += "<input type='button' value='Sublist 1' onClick='makeWordList1()'>";
-    t.innerHTML += "<input type='button' value='Sublist 2' onClick='makeWordList2()'>";
-    t.innerHTML += "<input type='button' value='Sublist 3' onClick='makeWordList3()'>";
-    t.innerHTML += "<input type='button' value='Sublist 4' onClick='makeWordList4()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='All Words' onClick='makeWordList()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 1' onClick='makeWordList1()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 2' onClick='makeWordList2()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 3' onClick='makeWordList3()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 4' onClick='makeWordList4()'>";
 }
 
 //assign values to each word
@@ -294,16 +294,16 @@ function renderQuestion(){
     as[5].setPos('F');
     
     //print them out baby
-	test.innerHTML = "<h3>"+"A: "+q1+"</h3>";
-    test.innerHTML += "<h3>"+"B: "+q2+"</h3>";
-    test.innerHTML += "<h3>"+"C: "+q3+"</h3>";
-	test.innerHTML += "<input type='text' name='choices' maxlength='1' style='width: 15px' id='A'> "+a1+"<br>";
-	test.innerHTML += "<input type='text' name='choices' maxlength='1' style='width: 15px' id='B'> "+a2+"<br>";
-    test.innerHTML += "<input type='text' name='choices' maxlength='1' style='width: 15px' id='C'> "+a3+"<br>";
-    test.innerHTML += "<input type='text' name='choices' maxlength='1' style='width: 15px' id='D'> "+a4+"<br>";
-    test.innerHTML += "<input type='text' name='choices' maxlength='1' style='width: 15px' id='E'> "+a5+"<br>";
-	test.innerHTML += "<input type='text' name='choices' maxlength='1' style='width: 15px' id='F'> "+a6+"<br><br>";
-	test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+	test.innerHTML = "<h3 class='ques_def'>"+"A: "+q1+"</h3>";
+    test.innerHTML += "<h3 class='ques_def'>"+"B: "+q2+"</h3>";
+    test.innerHTML += "<h3 class='ques_def'>"+"C: "+q3+"</h3>";
+	test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='A'> "+a1+"<br>";
+	test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='B'> "+a2+"<br>";
+    test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='C'> "+a3+"<br>";
+    test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='D'> "+a4+"<br>";
+    test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='E'> "+a5+"<br>";
+	test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='F'> "+a6+"<br><br>";
+	test.innerHTML += "<button id='submit_def' onclick='checkAnswer()'>Submit Answer</button>";
     //console.log(t.n2);
     t.clear();
     pos++;

@@ -138,12 +138,12 @@ function getObject(position,array){
 
 function clickButton(){
     var t = document.getElementById("quiz");
-    t.innerHTML = "<p>Please pick a quiz to take.</p>";
-    t.innerHTML += "<input type='button' value='All Words' onClick='makeWordList()'>";
-    t.innerHTML += "<input type='button' value='Sublist 1' onClick='makeWordList1()'>";
-    t.innerHTML += "<input type='button' value='Sublist 2' onClick='makeWordList2()'>";
-    t.innerHTML += "<input type='button' value='Sublist 3' onClick='makeWordList3()'>";
-    t.innerHTML += "<input type='button' value='Sublist 4' onClick='makeWordList4()'>";
+    t.innerHTML = "<p id='pick_text'>Please pick a quiz to take.</p>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='All Words' onClick='makeWordList()'>";
+    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 1' onClick='makeWordList1()'>";
+    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 2' onClick='makeWordList2()'>";
+    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 3' onClick='makeWordList3()'>";
+    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 4' onClick='makeWordList4()'>";
 }
 
 //assign values to each word
@@ -234,18 +234,18 @@ function renderQuestion(){
 	as = [];
 	answer_box_list = [];
     desc = document.getElementById("desc");
-    desc.innerHTML = "<h2>Select the correct word for each list of collocations.</h2>";
+    desc.innerHTML = "<h2 id='inst_header'>Select the correct word for each list of collocations.</h2>";
     test = document.getElementById("quiz");
     if (pos >= 5){
-        test.innerHTML = "<h2>DONE! YOU GOT " + count + " OUT OF 30 RIGHT!</h1>";
-        test.innerHTML += "<input type='button' value='Try Again' onClick='window.location.reload()'>";
-        test.innerHTML += "<h3>YOU GOT THE FOLLOWING WORDS RIGHT!</h3>";
+        test.innerHTML = "<h2 id='done_text'>DONE! YOU GOT " + count + " OUT OF 30 RIGHT!</h1>";
+        test.innerHTML += "<input id='try_again' type='button' value='Try Again' onClick='window.location.reload()'>";
+        test.innerHTML += "<h3 id='correct_text'>YOU GOT THE FOLLOWING WORDS RIGHT!</h3>";
         if (correct.length === 0){
-            test.innerHTML += "<p id='ans'>You didn't get any right...</p>";
+            test.innerHTML += "<p id='ans_zero'>You didn't get any right...</p>";
         } else {
             printCorrect(test);
         }
-        test.innerHTML += "<br><h3>YOU GOT THE FOLLOWING WORDS WRONG!</h3>";
+        test.innerHTML += "<br><h3 id='wrong_text'>YOU GOT THE FOLLOWING WORDS WRONG!</h3>";
         printWrong(test);
         return;
     }
@@ -270,8 +270,8 @@ function renderQuestion(){
     
     for (var i = 0; i < 6; i++){
 		var tmp = "ans" + i;
-		as_dup = shuffle(as); //FIX THIS
-		var answer_box = "<select id=" + tmp + ">\n<option value='' disabled selected></option>\n";
+		as_dup = shuffle(as); 
+		var answer_box = "<select class='answer_block' id=" + tmp + ">\n<option value='' disabled selected></option>\n";
 		for (var v of as_dup){
 			temp = v.getWord();
 			answer_box += "\n  <option value=" + temp + ">" + temp + "</option>";
@@ -288,7 +288,7 @@ function renderQuestion(){
     test.innerHTML += answer_box_list[3] + " " + a4 + "<br><br>";
     test.innerHTML += answer_box_list[4] + " " + a5 + "<br><br>";
 	test.innerHTML += answer_box_list[5] + " " + a6 + "<br><br>";
-	test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+	test.innerHTML += "<button id='submit_btn' onclick='checkAnswer()'>Submit Answer</button>";
     //console.log(t.n2);
     t.clear();
     pos++;

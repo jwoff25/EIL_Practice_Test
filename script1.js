@@ -136,7 +136,7 @@ function getObject(position,array){
 
 function clickButton(){
     var t = document.getElementById("quiz");
-    t.innerHTML = "<p>Please pick a quiz to take.</p>";
+    t.innerHTML = "<p id='pick_text'>Please pick a quiz to take.</p>";
     t.innerHTML += "<input type='button' class='sublist_select' value='All Words' onClick='makeWordList()'>";
     t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 1' onClick='makeWordList1()'>";
     t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 2' onClick='makeWordList2()'>";
@@ -203,7 +203,7 @@ function printWrong(doc){
 }
 
 function printCorrect(doc){
-    for (var c of correct){
+    for (var c of corre2ct){
         doc.innerHTML += "<p id='ans'>" + c.value + "</p>";
         doc.innerHTML += "<p>" + c.def + "</p><br>";
     }
@@ -221,18 +221,18 @@ var wrong = []; //wrong answers
 
 function renderQuestion(){
     desc = document.getElementById("desc");
-    desc.innerHTML = "<h2>Match the words to its definitions.</h2>";
+    desc.innerHTML = "<h2 id='inst_header'>Match the words to its definitions.</h2>";
     test = document.getElementById("quiz");
     if (pos >= 10){
-        test.innerHTML = "<h2>DONE! YOU GOT " + count + " OUT OF 30 RIGHT!</h1>";
-        test.innerHTML += "<input type='button' value='Try Again' onClick='window.location.reload()'>";
-        test.innerHTML += "<h3>YOU GOT THE FOLLOWING WORDS RIGHT!</h3>";
+        test.innerHTML = "<h2 id='done_text'>DONE! YOU GOT " + count + " OUT OF 30 RIGHT!</h1>";
+        test.innerHTML += "<input type='button' id ='try_again' value='Try Again' onClick='window.location.reload()'>";
+        test.innerHTML += "<h3 id='correct_text'>YOU GOT THE FOLLOWING WORDS RIGHT!</h3>";
         if (correct.length === 0){
-            test.innerHTML += "<p id='ans'>You didn't get any right...</p>";
+            test.innerHTML += "<p id='ans_zero'>You didn't get any right...</p>";
         } else {
             printCorrect(test);
         }
-        test.innerHTML += "<br><h3>YOU GOT THE FOLLOWING WORDS WRONG!</h3>";
+        test.innerHTML += "<br><h3 id='wrong_text'>YOU GOT THE FOLLOWING WORDS WRONG!</h3>";
         printWrong(test);
         return;
     }
@@ -303,7 +303,7 @@ function renderQuestion(){
     test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='D'> "+a4+"<br>";
     test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='E'> "+a5+"<br>";
 	test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='F'> "+a6+"<br><br>";
-	test.innerHTML += "<button id='submit_def' onclick='checkAnswer()'>Submit Answer</button>";
+	test.innerHTML += "<button id='submit_btn' onclick='checkAnswer()'>Submit Answer</button>";
     //console.log(t.n2);
     t.clear();
     pos++;

@@ -1,17 +1,180 @@
-a {
-    /*This makes href look like a button*/
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    
-    text-decoration: none;
-    color: initial;
+.body_font {
+  font-size: 25px;
+  font-family: arial;
+  text-align: center;
+  /*overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  scroll-behavior: auto;
+  scroll-snap-type: mandatory;
+  scroll-snap-destination: 100% 0%;*/
+}
+/*.page {
+  float: left;
+  width: 100%;
+  height: 100%;
+  background: GREY;
+}
+
+.inside {
+  background: WHITE;
+  width: 80%;
+  margin: 8% 8%;
+  height: 80%;
+}*/
+/* hover */
+a:hover, .button:hover {
+  background-color: #808080;
+}
+/* Buttons in index.html */
+nav li {
+  list-style-type: none;
+  display: inline;
+}
+nav a {
+  list-style-type: none;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin: 4px 2px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* btn buttons */
+.button {
+  list-style-type: none;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 #quiz {
-    border-style: double;
+    font-size: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #F8F8F8;
 }
 
+#desc {
+    font-size: 20px;
+}
+/*Select the correct word for each list of collocations*/
+#inst_header {
+  font-size: 25px;
+}
+/* AllWords&Sublist_select Buttons */
+.sublist_select {
+  font-size: 15px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding: 15px 32px;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+
+#submit_btn {
+  font-size: 15px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding: 15px 32px;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#col_submit_btn {
+  font-size: 15px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding: 15px 32px;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* A: core , B: alternative c: despite*/
+/*.ques_def {
+  text-align: left;
+}*/
+/*
 #ans {
-    font-size: 24px;
-	font-weight: bold;
+    font-size: 20px;
+	  font-weight: bold;
+}*/
+
+
+a {
+    /*This makes href look like a button*/
+    /*-webkit-appearance: button;
+    -moz-appearance: button;
+
+    text-decoration: none;
+    color: initial;*/
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        margin: 0;
+        padding: 0;
+    }
+    #quiz {
+        width: 100%;
+        box-shadow: none;
+    }
+    nav {
+      text-align: center;
+    }
+    nav a {
+      display: block;
+    }
+}
+
+/*media for iphone*/
+@media only screen and (max-width: 480px) {
+  .body_font {
+    font-size: 18px;
+  }
+  nav a {
+    font-size: 25px;
+    display: block;
+  }
 }

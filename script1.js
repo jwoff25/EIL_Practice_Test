@@ -13,23 +13,23 @@ class Word {
         this.key = null;
         this.pos = null;
     }
-    
+
     setDef(definition){
         this.def = definition;
     }
-    
+
     getWord(){
         return this.value;
     }
-    
+
     getDef(){
         return this.def;
     }
-    
+
     setKey(key){
         this.key = key;
     }
-    
+
     setPos(pos){
         this.pos = pos;
     }
@@ -44,12 +44,12 @@ class TrackNum {
         this.n1 = [];
         this.n2 = [];
     }
-    
+
     //clear n2 array
     clear(){
         this.n2 = [];
     }
-    
+
     //gets random numbers
     getNumber(id,max){
         if (id == 1){
@@ -82,7 +82,7 @@ class TrackNum {
         }
     }
 }
-// FIELD VARIABLES 
+// FIELD VARIABLES
 
 var t = new TrackNum();
 
@@ -198,7 +198,7 @@ function printWrong(doc){
     for (var w of wrong){
         doc.innerHTML += "<p id='ans'>" + w.value + "</p>";
         doc.innerHTML += "<p>" + w.def + "</p><br>";
-        
+
     }
 }
 
@@ -247,7 +247,7 @@ function renderQuestion(){
         console.log(w);
         as.push(w);
     }
-    
+
     //pick 3 to make them questions
     for (var i1 = 0; i1 < 3; i1++){
         var num = t.getNumber(2,0);
@@ -255,10 +255,10 @@ function renderQuestion(){
     }
     console.log(as);
     console.log(qs);
-    
+
     //assign answer key to word objects
     var chr = 'A';
-    
+
     for (var i2 = 0; i2 < 3; i2++){
         for (var i3 = 0; i3 < 6; i3++){
             if (qs[i2].value == as[i3].value){
@@ -276,7 +276,7 @@ function renderQuestion(){
 	var q1 = qs[0].getWord();
     var q2 = qs[1].getWord();
     var q3 = qs[2].getWord();
-    
+
     //set up answers
 	var a1 = as[0].getDef();
 	var a2 = as[1].getDef();
@@ -284,7 +284,7 @@ function renderQuestion(){
     var a4 = as[3].getDef();
     var a5 = as[4].getDef();
     var a6 = as[5].getDef();
-    
+
     //set position of answers
     as[0].setPos('A');
     as[1].setPos('B');
@@ -292,7 +292,7 @@ function renderQuestion(){
     as[3].setPos('D');
     as[4].setPos('E');
     as[5].setPos('F');
-    
+
     //print them out baby
 	test.innerHTML = "<h3 class='ques_def'>"+"A: "+q1+"</h3>";
     test.innerHTML += "<h3 class='ques_def'>"+"B: "+q2+"</h3>";
@@ -312,7 +312,7 @@ function renderQuestion(){
 function checkAnswer(){
     var choices = document.getElementsByName('choices');
     var chr = 'A';
-    
+
     //find how many correct answers
     for (var ii = 0; ii < 3; ii++){
         for (var c of choices){

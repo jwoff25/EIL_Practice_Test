@@ -13,27 +13,27 @@ class Word {
         this.key = null;
         this.pos = null;
     }
-    
+
     setDef(definition){
         this.def = definition;
     }
-    
+
     getWord(){
         return this.value;
     }
-    
+
     getDef(){
         return this.def;
     }
-    
+
     getCol(){
         return this.col;
     }
-    
+
     setKey(key){
         this.key = key;
     }
-    
+
     setPos(pos){
         this.pos = pos;
     }
@@ -48,12 +48,12 @@ class TrackNum {
         this.n1 = [];
         this.n2 = [];
     }
-    
+
     //clear n2 array
     clear(){
         this.n2 = [];
     }
-    
+
     //gets random numbers
     getNumber(id,max){
         if (id == 1){
@@ -86,7 +86,7 @@ class TrackNum {
         }
     }
 }
-// FIELD VARIABLES 
+// FIELD VARIABLES
 
 var t = new TrackNum();
 
@@ -140,10 +140,10 @@ function clickButton(){
     var t = document.getElementById("quiz");
     t.innerHTML = "<p id='pick_text'>Please pick a quiz to take.</p>";
     t.innerHTML += "<input type='button' class='sublist_select' value='All Words' onClick='makeWordList()'>";
-    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 1' onClick='makeWordList1()'>";
-    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 2' onClick='makeWordList2()'>";
-    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 3' onClick='makeWordList3()'>";
-    t.innerHTML += "<input type='button' class='sublist_select'value='Sublist 4' onClick='makeWordList4()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 1' onClick='makeWordList1()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 2' onClick='makeWordList2()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 3' onClick='makeWordList3()'>";
+    t.innerHTML += "<input type='button' class='sublist_select' value='Sublist 4' onClick='makeWordList4()'>";
 }
 
 //assign values to each word
@@ -200,7 +200,7 @@ function printWrong(doc){
     for (var w of wrong){
         doc.innerHTML += "<p id='ans'>" + w.value + "</p>";
         doc.innerHTML += "<p>" + w.col + "</p><br>";
-        
+
     }
 }
 
@@ -257,7 +257,7 @@ function renderQuestion(){
         console.log(w);
         as.push(w);
     }
-    
+
     //set up answers
 	var a1 = as[0].getCol();
 	var a2 = as[1].getCol();
@@ -265,12 +265,12 @@ function renderQuestion(){
     var a4 = as[3].getCol();
     var a5 = as[4].getCol();
     var a6 = as[5].getCol();
-	
+
 	var as_dup = [];
-    
+
     for (var i = 0; i < 6; i++){
 		var tmp = "ans" + i;
-		as_dup = shuffle(as); 
+		as_dup = shuffle(as);
 		var answer_box = "<select class='answer_block' id=" + tmp + ">\n<option value='' disabled selected></option>\n";
 		for (var v of as_dup){
 			temp = v.getWord();
@@ -279,8 +279,8 @@ function renderQuestion(){
 		answer_box += "\n</select>";
 		answer_box_list.push(answer_box);
 	}
-    //console.log(answer_box);    
-    
+    //console.log(answer_box);
+
     //print them out baby
     test.innerHTML = "<br>" + answer_box_list[0] + " " + a1 + "<br><br>";
 	test.innerHTML += answer_box_list[1] + " " + a2 + "<br><br>";
@@ -288,7 +288,7 @@ function renderQuestion(){
     test.innerHTML += answer_box_list[3] + " " + a4 + "<br><br>";
     test.innerHTML += answer_box_list[4] + " " + a5 + "<br><br>";
 	test.innerHTML += answer_box_list[5] + " " + a6 + "<br><br>";
-	test.innerHTML += "<button id='submit_btn' onclick='checkAnswer()'>Submit Answer</button>";
+	test.innerHTML += "<button id='col_submit_btn' onclick='checkAnswer()'>Submit Answer</button>";
     //console.log(t.n2);
     t.clear();
     pos++;

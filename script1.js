@@ -30,6 +30,10 @@ class Word {
         this.key = key;
     }
 
+    getKey(){
+        return this.key;
+    }
+
     setPos(pos){
         this.pos = pos;
     }
@@ -308,7 +312,7 @@ function renderQuestion(){
 	test.innerHTML = "<h3 class='ques_def'>"+"A: "+q1+"</h3>";
     test.innerHTML += "<h3 class='ques_def'>"+"B: "+q2+"</h3>";
     test.innerHTML += "<h3 class='ques_def'>"+"C: "+q3+"</h3>";
-	test.innerHTML = "<br>" + answer_box_list[0] + " " + a1 + "<br><br>";
+	test.innerHTML += "<br>" + answer_box_list[0] + " " + a1 + "<br><br>";
 	test.innerHTML += answer_box_list[1] + " " + a2 + "<br><br>";
     test.innerHTML += answer_box_list[2] + " " + a3 + "<br><br>";
     test.innerHTML += answer_box_list[3] + " " + a4 + "<br><br>";
@@ -321,17 +325,23 @@ function renderQuestion(){
 }
 
 function checkAnswer(){
-    for (var i = 0; i < 6; i++){
-		var ans = "ans" + i;
-		var a = document.getElementById(ans);
-		var resp = a.options[a.selectedIndex].text;
-		if (resp == as[i].getWord()){
-			correct.push(as[i]);
-			count++;
-		} else {
-			wrong.push(as[i]);
-		}
-	}
+    var counter = 0;
+    for (var j = 0; j < 3; j++){
+        for (var i = 0; i < 6; i++){
+            var ans = "ans" + i;
+            var a = document.getElementById(ans);
+            var resp = a.options[a.selectedIndex].text;
+            if (resp == qs[j].getKey()){
+                correct.push(qs[j]);
+                count++;
+            } else {
+                counter++;
+            }
+        }
+        if (counter == 6){
+            wrong.push(qs[j]);
+        }
+    }
 	renderQuestion();
 }
 window.addEventListener("load", clickButton, false);

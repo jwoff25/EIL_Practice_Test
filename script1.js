@@ -216,6 +216,7 @@ var as = []; //answer pool
 var qs = []; //question pool
 var correct = []; //correct answers
 var wrong = []; //wrong answers
+var answer_box_list = []; //answer boxes
 
 // ACTUAL QUIZ METHODS
 
@@ -273,17 +274,27 @@ function renderQuestion(){
         }
     }
     //set up questions
-	var q1 = qs[0].getWord();
-    var q2 = qs[1].getWord();
-    var q3 = qs[2].getWord();
+	var q1 = qs[0].getDef();
+    var q2 = qs[1].getDef();
+    var q3 = qs[2].getDef();
 
     //set up answers
-	var a1 = as[0].getDef();
-	var a2 = as[1].getDef();
-	var a3 = as[2].getDef();
-    var a4 = as[3].getDef();
-    var a5 = as[4].getDef();
-    var a6 = as[5].getDef();
+	var a1 = as[0].getWord();
+	var a2 = as[1].getWord();
+	var a3 = as[2].getWord();
+    var a4 = as[3].getWord();
+    var a5 = as[4].getWord();
+    var a6 = as[5].getWord();
+	
+	for (var i = 0; i < 6; i++){
+		var tmp = "ans" + i;
+		var answer_box = "<select class='answer_block' id=" + tmp + ">\n<option value='' disabled selected></option>\n";
+		for (var v of ["A","B","C"]){
+			answer_box += "\n  <option value=" + v + ">" + v + "</option>";
+		}
+		answer_box += "\n</select>";
+		answer_box_list.push(answer_box);
+	}
 
     //set position of answers
     as[0].setPos('A');
@@ -297,12 +308,12 @@ function renderQuestion(){
 	test.innerHTML = "<h3 class='ques_def'>"+"A: "+q1+"</h3>";
     test.innerHTML += "<h3 class='ques_def'>"+"B: "+q2+"</h3>";
     test.innerHTML += "<h3 class='ques_def'>"+"C: "+q3+"</h3>";
-	test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='A'> "+a1+"<br>";
-	test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='B'> "+a2+"<br>";
-    test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='C'> "+a3+"<br>";
-    test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='D'> "+a4+"<br>";
-    test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='E'> "+a5+"<br>";
-	test.innerHTML += "<input type='text' class='def_ans' name='choices' maxlength='1' style='width: 15px' id='F'> "+a6+"<br><br>";
+	test.innerHTML = "<br>" + answer_box_list[0] + " " + a1 + "<br><br>";
+	test.innerHTML += answer_box_list[1] + " " + a2 + "<br><br>";
+    test.innerHTML += answer_box_list[2] + " " + a3 + "<br><br>";
+    test.innerHTML += answer_box_list[3] + " " + a4 + "<br><br>";
+    test.innerHTML += answer_box_list[4] + " " + a5 + "<br><br>";
+	test.innerHTML += answer_box_list[5] + " " + a6 + "<br><br>";
 	test.innerHTML += "<button id='submit_btn' onclick='checkAnswer()'>Submit Answer</button>";
     //console.log(t.n2);
     t.clear();
@@ -310,35 +321,17 @@ function renderQuestion(){
 }
 
 function checkAnswer(){
-    var choices = document.getElementsByName('choices');
-    var chr = 'A';
-
-    //find how many correct answers
-    for (var ii = 0; ii < 3; ii++){
-        for (var c of choices){
-            if (c.value.toUpperCase() == chr){
-                var c1 = getObject(c.id,as);
-                if (c1.key == qs[ii].key){
-                    count++;
-                    correct.push(c1);
-                    break;
-                }
-                else {
-                    wrong.push(c1);
-                    break;
-                }
-            } else {
-                var c2 = getObject(c.id,as);
-                if (c2.key == qs[ii].key){
-                    wrong.push(qs[ii]);
-                }
-            }
-        }
-        chr = nextChar(chr);
-    }
-    //console.log(correct);
-    console.log(wrong);
-    console.log(count);
+    for (var i = 0; i < 6; i++){
+		var ans = "ans" + i;
+		var a = document.getElementById(ans);
+		var resp = a.options[a.selectedIndex].text;
+		if (resp == as[i].getWord()){
+			correct.push(as[i]);
+			count++;
+		} else {
+			wrong.push(as[i]);
+		}
+	}
 	renderQuestion();
 }
 window.addEventListener("load", clickButton, false);

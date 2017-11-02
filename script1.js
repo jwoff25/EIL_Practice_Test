@@ -207,7 +207,7 @@ function printWrong(doc){
 }
 
 function printCorrect(doc){
-    for (var c of corre2ct){
+    for (var c of correct){
         doc.innerHTML += "<p id='ans'>" + c.value + "</p>";
         doc.innerHTML += "<p>" + c.def + "</p><br>";
     }
@@ -292,7 +292,7 @@ function renderQuestion(){
 	
 	for (var i = 0; i < 6; i++){
 		var tmp = "ans" + i;
-		var answer_box = "<select class='answer_block' id=" + tmp + ">\n<option value='' disabled selected></option>\n";
+		var answer_box = "<select class='answer_block' id=" + tmp + ">\n<option value=''></option>\n";
 		for (var v of ["A","B","C"]){
 			answer_box += "\n  <option value=" + v + ">" + v + "</option>";
 		}
@@ -332,13 +332,16 @@ function checkAnswer(){
             var a = document.getElementById(ans);
             var resp = a.options[a.selectedIndex].text;
             if (resp == qs[j].getKey()){
-                correct.push(qs[j]);
-                count++;
+				if (as[i].getWord() == qs[j].getWord()) {
+					correct.push(qs[j]);
+					count++;
+					counter = -6;
+				}
             } else {
                 counter++;
             }
         }
-        if (counter == 6){
+        if (counter > 0){
             wrong.push(qs[j]);
         }
     }

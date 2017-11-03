@@ -327,6 +327,7 @@ function renderQuestion(){
 function checkAnswer(){
     var counter = 0;
     for (var j = 0; j < 3; j++){
+		counter = 1;
         for (var i = 0; i < 6; i++){
             var ans = "ans" + i;
             var a = document.getElementById(ans);
@@ -335,13 +336,12 @@ function checkAnswer(){
 				if (as[i].getWord() == qs[j].getWord()) {
 					correct.push(qs[j]);
 					count++;
-					counter = -6;
+					counter = 0;
+					break;
 				}
-            } else {
-                counter++;
-            }
+			}
         }
-        if (counter > 0){
+        if (counter == 1){
             wrong.push(qs[j]);
         }
     }
